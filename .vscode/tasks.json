@@ -1,0 +1,30 @@
+{
+    "version": "0.1.0",
+    "command": "C:\\Windows\\System32\\cmd.exe",
+    "isShellCommand": true,
+    "args": ["/c"],
+    "showOutput": "always",
+    "suppressTaskName": true,
+    "options": {
+        "cwd": "${workspaceRoot}\\build"
+    },
+    "tasks": [
+        {
+            "taskName": "make",
+            "args" : ["make"],
+            "isBuildCommand": true,
+            "problemMatcher": {
+                "owner": "c",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        }
+    ]
+}
