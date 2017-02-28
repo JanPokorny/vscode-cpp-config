@@ -1,17 +1,17 @@
 {
     "version": "0.1.0",
-    "command": "C:\\Windows\\System32\\cmd.exe",
+    "command": "make",
     "isShellCommand": true,
-    "args": ["/c"],
+    "args": [],
     "showOutput": "always",
     "suppressTaskName": true,
     "options": {
-        "cwd": "${workspaceRoot}\\build"
+        "cwd": "${fileDirname}/build"
     },
     "tasks": [
         {
             "taskName": "make",
-            "args" : ["make"],
+            "args" : [],
             "isBuildCommand": true,
             "problemMatcher": {
                 "owner": "c",

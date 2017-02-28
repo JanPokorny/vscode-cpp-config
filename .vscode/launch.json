@@ -6,10 +6,11 @@
             "preLaunchTask": "make",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}\\build\\${workspaceRootFolderName}_${fileBasenameNoExtension}.exe",
+            // Executable program name
+            "program": "${fileDirname}/build/${workspaceRootFolderName}_${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceRoot}\\build\\",
+            "cwd": "${fileDirname}/build/",
             "environment": [],
             "externalConsole": true,
             "linux": {
@@ -27,7 +28,7 @@
             },
             "windows": {
                 "MIMode": "gdb",
-                "miDebuggerPath": "C:\\Dev\\MinGW64\\mingw64\\bin\\gdb.exe",
+                "miDebuggerPath": "C:\\MinGW\\mingw64\\bin\\gdb.exe",
                 "setupCommands": [
                     {
                         "description": "Enable pretty-printing for gdb",

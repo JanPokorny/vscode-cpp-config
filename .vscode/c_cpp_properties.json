@@ -25,8 +25,8 @@
         {
             "name": "Win32",
             "includePath": [
-                "C:\\Dev\\MinGW64\\mingw64\\x86_64-w64-mingw32\\include",
-                "C:\\Dev\\MinGW64\\mingw64\\include"
+                "C:\\MinGW\\mingw64\\x86_64-w64-mingw32\\include",
+                "C:\\MinGW\\mingw64\\include"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
