@@ -6,10 +6,10 @@
             "preLaunchTask": "make",
             "type": "cppdbg",
             "request": "launch",
-            "program": "${workspaceRoot}\\build\\${workspaceRootFolderName}_${fileBasenameNoExtension}.exe",
+            "program": "${workspaceRoot}/build/${fileBasenameNoExtension}",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceRoot}\\build\\",
+            "cwd": "${workspaceRoot}/build/",
             "environment": [],
             "externalConsole": true,
             "linux": {

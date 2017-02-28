@@ -1,12 +1,12 @@
 {
     "version": "0.1.0",
-    "command": "C:\\Windows\\System32\\cmd.exe",
+    "command": "bash",
     "isShellCommand": true,
-    "args": ["/c"],
+    "args": ["-c"],
     "showOutput": "always",
     "suppressTaskName": true,
     "options": {
-        "cwd": "${workspaceRoot}\\build"
+        "cwd": "${workspaceRoot}/build"
     },
     "tasks": [
         {
