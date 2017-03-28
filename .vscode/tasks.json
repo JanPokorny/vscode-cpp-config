@@ -44,7 +44,7 @@
         },
         {
             "taskName": "fix",
-            "args": ["clang-tidy -fix -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"],
+            "args": ["clang-tidy -fix -fix-errors -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"],
             "problemMatcher": {
                 "owner": "c",
                 "fileLocation": "absolute",
