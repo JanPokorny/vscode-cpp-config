@@ -25,6 +25,11 @@
                         "description": "Follow child processes",
                         "text": "set follow-fork-mode child",
                         "ignoreFailures": true
+                    },
+                    {
+                        "description": "Detach on fork",
+                        "text": "set detach-on-fork off",
+                        "ignoreFailures": true
                     }
                 ]
             },
@@ -43,6 +48,11 @@
                     {
                         "description": "Follow child processes",
                         "text": "set follow-fork-mode child",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "description": "Detach on fork",
+                        "text": "set detach-on-fork off",
                         "ignoreFailures": true
                     }
                 ]
