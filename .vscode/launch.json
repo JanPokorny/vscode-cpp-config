@@ -20,6 +20,11 @@
                         "description": "Enable pretty-printing for gdb",
                         "text": "-enable-pretty-printing",
                         "ignoreFailures": true
+                    },
+                    {
+                        "description": "Follow child processes",
+                        "text": "set follow-fork-mode child",
+                        "ignoreFailures": true
                     }
                 ]
             },
@@ -33,6 +38,11 @@
                     {
                         "description": "Enable pretty-printing for gdb",
                         "text": "-enable-pretty-printing",
+                        "ignoreFailures": true
+                    },
+                    {
+                        "description": "Follow child processes",
+                        "text": "set follow-fork-mode child",
                         "ignoreFailures": true
                     }
                 ]
