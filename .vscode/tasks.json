@@ -1,17 +1,17 @@
 {
     "version": "0.1.0",
-    "command": "make",
+    "command": "sh",
     "isShellCommand": true,
-    "args": [],
+    "args": ["-c"],
     "showOutput": "always",
     "suppressTaskName": true,
     "options": {
-        "cwd": "${fileDirname}/build"
+        "cwd": "${workspaceRoot}"
     },
     "tasks": [
         {
-            "taskName": "make",
-            "args" : [],
+            "taskName": "build",
+            "args" : ["cd build && make"],
             "isBuildCommand": true,
             "problemMatcher": {
                 "owner": "c",
@@ -25,6 +25,41 @@
                     "message": 5
                 }
             }
+        },
+        {
+            "taskName": "tidy",
+            "args": ["clang-tidy -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"],
+            "problemMatcher": {
+                "owner": "c",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "taskName": "fix",
+            "args": ["clang-tidy -fix -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"],
+            "problemMatcher": {
+                "owner": "c",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^$"
+                }
+            }
+        },
+        {
+            "taskName": "format",
+            "args": ["clang-format -i ${fileBasename} --"]
+        },
+        {
+            "taskName": "cmake",
+            "args": ["( sed -i 's/{CMAKE_C_FLAGS} -std=c99/{CMAKE_C_FLAGS} -m32 -g -Og -fno-inline -fno-omit-frame-pointer -std=c99/' -- CMakeLists.txt ) && ( rm -rf build/* || mkdir build ) && cd build && ( cmake .. -G 'MSYS Makefiles' || cmake .. )"]
         }
     ]
 }

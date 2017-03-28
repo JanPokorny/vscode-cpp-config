@@ -1,15 +1,23 @@
 # VSCode gcc config
 
-Made for the subject PB071 at FI MU.
+Made for the subject **PB071** at **FI MU**.
 
-Tested on Windows 10 and Ubuntu.
+Tested on **Windows 10** and **Ubuntu**.
 
-How to use:
-
+## How to use
 1. Install [VSCode](https://code.visualstudio.com/), C/C++ extension and C/C++ IntelliSense (it will prompt you upon opening the first `.c` or `.cpp` file)
-2. (Windows only) Install [MinGW 64bit](https://sourceforge.net/projects/mingw-w64/) and [MSYS 64bit](http://www.msys2.org/). Add their `/bin` folders to PATH. If you install in a location other than `C:\\MinGW\\`, do a search-replace in the json files.
-3. Open command line in the project folder (the one containing `CMakeLists.txt`) and run `mkdir build && cd build && cmake ..` (on Windows, append ` -G "MinGW Makefiles"` at the end)
-4. Place `.vscode` from this repo to the project folder
-5. Add `build` and `.vscode` to `.gitignore`
-6. Opening the project folder in VS Code and pressing F5 inside a `.c` file should trigger a make and debugging in `gdb`
-7. (Optional) You can change naming convention of the resulting executable by editing the "program" field in `launch.json`. For example, remove the prefixing by folder name by removing `${workspaceRootFolderName}_`.
+2. (Windows only) Install [MinGW](https://sourceforge.net/projects/mingw/) (use the default location, `C:\\MinGW\`) and install gcc, build tools and msys using the GUI. Then add `C:\MinGW\msys\1.0\bin` and `C:\MinGW\bin` to the system PATH. (This replaces the Windows bash. If you still want to use it, delete `bash.exe` from `C:\MinGW\msys\1.0\bin`)
+3. Place all the files from this repo to the project folder
+4. Add `build`, `.vscode`, `.clang-format` and `.clang-tidy` to `.gitignore`
+5. Open the project folder in VS Code (directly, don't open a parent folder)
+6. Press `CTRL-P` and type `task cmake`, this will init CMake in the build folder.
+
+## Debugging
+Switching to debugging tab and pressing the green play button triggers a build and debug. By default, debugger tries to open an executable with the same name as the currently opened source file (without extension). You can change it by editing the marked line at the beginning of `.vscode/launch.json`.
+
+## Available commands (`CTRL-P`)
+- `task cmake` -- runs CMake and creates the build directory (also adds debug flags)
+- `task build` -- runs Make (runs automatically when debugging)
+- `task tidy` -- runs Clang Tidy on the current file and underlines the errors
+- `task fix` -- like `task tidy`, but instead of underlining tries to fix the errors automatically
+- `task format` -- formats the current file using Clang Format
