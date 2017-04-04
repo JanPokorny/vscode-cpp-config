@@ -59,7 +59,7 @@
         },
         {
             "taskName": "cmake",
-            "args": ["( sed -i 's/{CMAKE_C_FLAGS} -std=c99/{CMAKE_C_FLAGS} -m32 -g -Og -fno-inline -fno-omit-frame-pointer -std=c99/' -- CMakeLists.txt ) && ( rm -rf build/* || mkdir build ) && cd build && ( cmake .. -G 'MSYS Makefiles' || cmake .. )"]
+            "args": ["sed -i 's/-m32 -g -Og -fno-inline -fno-omit-frame-pointer -std=c99/-std=c99/' -- CMakeLists.txt && sed -i 's/-std=c99/-m32 -g -Og -fno-inline -fno-omit-frame-pointer -std=c99/' -- CMakeLists.txt && rm -rf build && mkdir build && cd build && ( cmake .. -G 'MSYS Makefiles' || cmake .. )"]
         }
     ]
 }
