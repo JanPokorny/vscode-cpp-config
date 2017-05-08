@@ -14,6 +14,7 @@ Requires **Windows 10 Creators Update**.
 1. Place all the files from this repo to your new C project folder
 1. Add `build`, `.vscode`, `.clang-format` and `.clang-tidy` to `.gitignore` (either global or local)
 1. Open the project folder in VS Code (directly, don't open a parent folder)
+1. Press `CTRL-P` and type `task cmake-add-debug` to automatically add flags for debugging support to `CMakeLists.txt`
 
 ## Debugging
 Switching to debugging tab and pressing the green play button triggers a build and debug. By default, debugger tries to open an executable called `main`. You can change it by editing the marked line at the beginning of `.vscode/launch.json`.

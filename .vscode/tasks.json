@@ -64,7 +64,7 @@
         {
             "taskName": "cmake-add-debug",
             "args": [
-                "sed -i 's/-g -O0 -fno-inline -fno-omit-frame-pointer -std=c99/-std=c99/' -- CMakeLists.txt && sed -i 's/-std=c99/-g -O0 -fno-inline -fno-omit-frame-pointer -std=c99/' -- CMakeLists.txt && rm -rf build && mkdir build && cd build && cmake .."
+                "sed -i 's/-g -O0 -fno-inline -fno-omit-frame-pointer -std=c99/-std=c99/' -- CMakeLists.txt && sed -i 's/-std=c99/-g -O0 -fno-inline -fno-omit-frame-pointer -std=c99/' -- CMakeLists.txt && mkdir -p build && cd build && cmake .."
             ]
         }
     ]
