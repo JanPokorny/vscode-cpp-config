@@ -2,45 +2,19 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C Launch",
-
-            // The executable path for debugging:
-            "program": "${workspaceRoot}/build/${fileBasenameNoExtension}",
-
+            "name": "C Launch (Bash on Windows)",
+            "program": "main", // <-- The executable name for debugging
             "preLaunchTask": "build",
             "type": "cppdbg",
             "request": "launch",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${workspaceRoot}/build/",
+            "cwd": ".",
             "environment": [],
             "externalConsole": true,
-            "linux": {
-                "MIMode": "gdb",
-                "setupCommands": [
-                    {
-                        "description": "Enable pretty-printing for gdb",
-                        "text": "-enable-pretty-printing",
-                        "ignoreFailures": true
-                    },
-                    {
-                        "description": "Follow child processes",
-                        "text": "set follow-fork-mode child",
-                        "ignoreFailures": true
-                    },
-                    {
-                        "description": "Detach on fork",
-                        "text": "set detach-on-fork off",
-                        "ignoreFailures": true
-                    }
-                ]
-            },
-            "osx": {
-                "MIMode": "lldb"
-            },
             "windows": {
                 "MIMode": "gdb",
-                "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe",
+                "miDebuggerPath": "gdb",
                 "setupCommands": [
                     {
                         "description": "Enable pretty-printing for gdb",
@@ -58,6 +32,17 @@
                         "ignoreFailures": true
                     }
                 ]
+            },
+            "pipeTransport": {
+                "pipeCwd": "${workspaceRoot}/build",
+                "pipeProgram": "c:\\\\windows\\sysnative\\bash.exe",
+                "pipeArgs": [
+                    "-c"
+                ],
+                "debuggerPath": "/usr/bin/gdb"
+            },
+            "sourceFileMap": {
+                "/mnt/c": "C:\\\\"
             }
         }
     ]

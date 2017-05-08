@@ -8,7 +8,11 @@
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
+                "databaseFilename": "",
+                "path": [
+                    "/usr/include",
+                    "/usr/local/include"
+                ]
             }
         },
         {
@@ -19,18 +23,26 @@
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
+                "databaseFilename": "",
+                "path": [
+                    "/usr/include",
+                    "/usr/local/include"
+                ]
             }
         },
         {
             "name": "Win32",
             "includePath": [
-                "C:\\MinGW\\mingw64\\x86_64-w64-mingw32\\include",
-                "C:\\MinGW\\mingw64\\include"
+                "%LOCALAPPDATA%\\lxss\\rootfs\\usr\\include\\",
+                "%LOCALAPPDATA%\\lxss\\rootfs\\usr\\local\\include\\"
             ],
             "browse": {
                 "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": ""
+                "databaseFilename": "",
+                "path": [
+                    "%LOCALAPPDATA%\\lxss\\rootfs\\usr\\include\\",
+                    "%LOCALAPPDATA%\\lxss\\rootfs\\usr\\local\\include\\"
+                ]
             }
         }
     ]

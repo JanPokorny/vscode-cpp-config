@@ -1,8 +1,10 @@
 {
     "version": "0.1.0",
-    "command": "sh",
+    "command": "C:\\\\Windows\\sysnative\\bash.exe",
     "isShellCommand": true,
-    "args": ["-c"],
+    "args": [
+        "-c"
+    ],
     "showOutput": "always",
     "suppressTaskName": true,
     "options": {
@@ -11,7 +13,9 @@
     "tasks": [
         {
             "taskName": "build",
-            "args" : ["cd build && make"],
+            "args": [
+                "mkdir -p build && cd build && cmake .. && make"
+            ],
             "isBuildCommand": true,
             "problemMatcher": {
                 "owner": "c",
@@ -28,7 +32,9 @@
         },
         {
             "taskName": "tidy",
-            "args": ["clang-tidy -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"],
+            "args": [
+                "clang-tidy -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"
+            ],
             "problemMatcher": {
                 "owner": "c",
                 "fileLocation": "absolute",
@@ -44,7 +50,9 @@
         },
         {
             "taskName": "fix",
-            "args": ["clang-tidy -fix -fix-errors -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"],
+            "args": [
+                "clang-tidy -fix -fix-errors -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"
+            ],
             "problemMatcher": {
                 "owner": "c",
                 "fileLocation": "absolute",
@@ -54,12 +62,10 @@
             }
         },
         {
-            "taskName": "format",
-            "args": ["clang-format -i ${fileBasename} --"]
-        },
-        {
-            "taskName": "cmake",
-            "args": ["( sed -i 's/{CMAKE_C_FLAGS} -std=c99/{CMAKE_C_FLAGS} -m32 -g -Og -fno-inline -fno-omit-frame-pointer -std=c99/' -- CMakeLists.txt ) && ( rm -rf build/* || mkdir build ) && cd build && ( cmake .. -G 'MSYS Makefiles' || cmake .. )"]
+            "taskName": "cmake-add-debug",
+            "args": [
+                "sed -i 's/-g -O0 -fno-inline -fno-omit-frame-pointer -std=c99/-std=c99/' -- CMakeLists.txt && sed -i 's/-std=c99/-g -O0 -fno-inline -fno-omit-frame-pointer -std=c99/' -- CMakeLists.txt && rm -rf build && mkdir build && cd build && cmake .."
+            ]
         }
     ]
 }
