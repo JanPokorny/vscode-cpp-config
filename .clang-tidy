@@ -1,5 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-alpha*,clang-analyzer-alpha.security.*,clang-analyzer-alpha.deadcode.*,clang-analyzer-alpha.core.*,google-runtime-memset,llvm-include-order,llvm-include-order,misc-assert-side-effect,misc-definitions-in-headers,misc-macro-parentheses,misc-macro-repeated-side-effects,misc-argument-comment,misc-non-copyable-objects,misc-unused-parameters,misc-swapped-arguments,readability-else-after-return,readability-inconsistent-declaration-parameter-name,readability-simplify-boolean-expr'
+Checks:          'clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-alpha*,cert-dcl50-cpp,cert-err52-cpp,cppcoreguidelines-pro-type-const-cast, cppcoreguidelines-pro-type-cstyle-cast, cppcoreguidelines-pro-type-reinterpret-cast, cppcoreguidelines-pro-type-static-cast-downcast, google-build-explicit-make-pair, google-build-namespaces, google-global-names-in-headers, google-runtime-member-string-references, google-runtime-memset, google-runtime-operator, llvm-namespace-comment, misc-argument-comment, misc-assert-side-effect, misc-assign-operator-signature, misc-definitions-in-headers, misc-inaccurate-erase, misc-inefficient-algorithm, misc-macro-parentheses, misc-macro-repeated-side-effects, misc-new-delete-overloads, misc-noexcept-move-constructor, misc-non-copyable-objects, misc-sizeof-container, misc-static-assert, misc-string-integer-assignment, misc-swapped-arguments, misc-throw-by-value-catch-by-reference, misc-undelegated-constructor, misc-uniqueptr-reset-release, misc-unused-alias-decls, misc-unused-parameters, misc-unused-raii, misc-virtual-near-miss, modernize-loop-convert, modernize-make-unique, modernize-redundant-void-arg, modernize-replace-auto-ptr, modernize-shrink-to-fit, modernize-use-auto, modernize-use-default, modernize-use-nullptr, modernize-use-override, performance-unnecessary-copy-initialization, readability-container-size-empty, readability-else-after-return, readability-inconsistent-declaration-parameter-name, readability-redundant-smartptr-get, readability-redundant-string-cstr, readability-simplify-boolean-expr, readability-uniqueptr-delete-release'
 HeaderFilterRegex: '^.*/_tmp_/.*$'
 AnalyzeTemporaryDtors: false
 User:            kontr
@@ -7,11 +7,21 @@ CheckOptions:
 #  - key:             readability-braces-around-statements.ShortStatementLines
 #    value:           '0'
 #  - key:             readability-function-size.StatementThreshold
-#    value:           '800'
+    #value:           '800'
+  - key:             llvm-namespace-comment.ShortNamespaceLines
+    value:           '1'
+  - key:             llvm-namespace-comment.SpacesBeforeComments
+    value:           '1'
   - key:             misc-assert-side-effect.AssertMacros
     value:           assert
   - key:             misc-assert-side-effect.CheckFunctionCalls
     value:           '0'
   - key:             misc-definitions-in-headers.UseHeaderFileExtension
     value:           '1'
-    
+  - key:             misc-throw-by-value-catch-by-reference.CheckThrowTemporaries
+    value:           '1'
+  - key:             modernize-loop-convert.MinConfidence
+    value:           reasonable
+  - key:             modernize-use-nullptr.NullMacros
+    value:           'NULL'
+...

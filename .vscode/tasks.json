@@ -1,27 +1,27 @@
 {
-    "version": "0.1.0",
-    "command": "C:\\\\Windows\\sysnative\\bash.exe",
-    "isShellCommand": true,
-    "args": [
-        "-c"
-    ],
-    "showOutput": "always",
-    "suppressTaskName": true,
-    "options": {
-        "cwd": "${workspaceRoot}"
-    },
+    // See https://go.microsoft.com/fwlink/?LinkId=733558
+    // for the documentation about the tasks.json format
+    "version": "2.0.0",
     "tasks": [
         {
             "taskName": "build",
-            "args": [
-                "mkdir -p build && cd build && cmake .. && make"
-            ],
-            "isBuildCommand": true,
+            "type": "shell",
+            "command": "mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS='${CMAKE_CXX_FLAGS} -g -O0' .. && make",
+            "windows": {
+                "command": "(mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS='${CMAKE_CXX_FLAGS} -g -O0' .. && make) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
+            },
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
             "problemMatcher": {
-                "owner": "c",
+                "owner": "cpp",
                 "fileLocation": "absolute",
                 "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error|note):\\s+(.*)$",
                     "file": 1,
                     "line": 2,
                     "column": 3,
@@ -31,41 +31,42 @@
             }
         },
         {
-            "taskName": "tidy",
-            "args": [
-                "clang-tidy -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"
-            ],
+            "taskName": "test",
+            "type": "shell",
+            "command": "cd build && ./${workspaceRootFolderName}_tests",
+            "windows": {
+                "command": "(cd build && ./${workspaceRootFolderName}_tests) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
+            },
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "options": {
+                "cwd": "${workspaceRoot}"
+            },
+            "dependsOn": "build",
             "problemMatcher": {
-                "owner": "c",
+                "owner": "cpp",
                 "fileLocation": "absolute",
-                "pattern": {
-                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error):\\s+(.*)$",
-                    "file": 1,
-                    "line": 2,
-                    "column": 3,
-                    "severity": 4,
-                    "message": 5
-                }
+                "pattern": [
+                    {
+                        "regexp": "^(.*):(\\d+): (.*)$",
+                        "file": 1,
+                        "line": 2,
+                        "code": 3
+                    },
+                    {
+                        "regexp": ".*"
+                    },
+                    {
+                        "regexp": ".*"
+                    },
+                    {
+                        "regexp": "^(.*)$",
+                        "message": 1
+                    }
+                ]
             }
-        },
-        {
-            "taskName": "fix",
-            "args": [
-                "clang-tidy -fix -fix-errors -extra-arg-before=-x -extra-arg-before=c -extra-arg=-std=c99 ${fileBasename} --"
-            ],
-            "problemMatcher": {
-                "owner": "c",
-                "fileLocation": "absolute",
-                "pattern": {
-                    "regexp": "^$"
-                }
-            }
-        },
-        {
-            "taskName": "cmake-add-debug",
-            "args": [
-                "sed -i 's/-g -O0 -fno-inline -fno-omit-frame-pointer -std=c99/-std=c99/' -- CMakeLists.txt && sed -i 's/-std=c99/-g -O0 -fno-inline -fno-omit-frame-pointer -std=c99/' -- CMakeLists.txt && mkdir -p build && cd build && cmake .."
-            ]
         }
     ]
 }

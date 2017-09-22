@@ -4,46 +4,86 @@
             "name": "Mac",
             "includePath": [
                 "/usr/include",
-                "/usr/local/include"
+                "/usr/local/include",
+                "${workspaceRoot}"
             ],
+            "defines": [],
+            "intelliSenseMode": "clang-x64",
             "browse": {
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": "",
                 "path": [
                     "/usr/include",
-                    "/usr/local/include"
-                ]
-            }
+                    "/usr/local/include",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
+            },
+            "macFrameworkPath": [
+                "/System/Library/Frameworks",
+                "/Library/Frameworks"
+            ]
         },
         {
             "name": "Linux",
             "includePath": [
                 "/usr/include",
-                "/usr/local/include"
+                "/usr/local/include",
+                "${workspaceRoot}"
             ],
+            "defines": [],
+            "intelliSenseMode": "clang-x64",
             "browse": {
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": "",
                 "path": [
                     "/usr/include",
-                    "/usr/local/include"
-                ]
+                    "/usr/local/include",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
             }
         },
         {
             "name": "Win32",
             "includePath": [
-                "%LOCALAPPDATA%\\lxss\\rootfs\\usr\\include\\",
-                "%LOCALAPPDATA%\\lxss\\rootfs\\usr\\local\\include\\"
+                "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.14393.0/um",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.14393.0/ucrt",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.14393.0/shared",
+                "C:/Program Files (x86)/Windows Kits/10/Include/10.0.14393.0/winrt",
+                "C:/MinGW/include",
+                "C:/MinGW/mingw32/include",
+                "C:/MinGW/msys/1.0/include",
+                "C:/MinGW/lib/gcc/mingw32/5.3.0/include",
+                "C:/MinGW/lib/gcc/mingw32/5.3.0/include-fixed",
+                "C:/MinGW/lib/gcc/mingw32/5.3.0/include/c++",
+                "C:/MinGW/lib/gcc/mingw32/5.3.0/include/c++/mingw32",
+                "${workspaceRoot}"
             ],
+            "defines": [
+                "_DEBUG",
+                "UNICODE"
+            ],
+            "intelliSenseMode": "msvc-x64",
             "browse": {
-                "limitSymbolsToIncludedHeaders": true,
-                "databaseFilename": "",
                 "path": [
-                    "%LOCALAPPDATA%\\lxss\\rootfs\\usr\\include\\",
-                    "%LOCALAPPDATA%\\lxss\\rootfs\\usr\\local\\include\\"
-                ]
+                    "C:/Program Files (x86)/Microsoft Visual Studio 14.0/VC/include/*",
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.14393.0/um",
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.14393.0/ucrt",
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.14393.0/shared",
+                    "C:/Program Files (x86)/Windows Kits/10/Include/10.0.14393.0/winrt",
+                    "C:/MinGW/include",
+                    "C:/MinGW/mingw32/include",
+                    "C:/MinGW/msys/1.0/include",
+                    "C:/MinGW/lib/gcc/mingw32/5.3.0/include",
+                    "C:/MinGW/lib/gcc/mingw32/5.3.0/include-fixed",
+                    "C:/MinGW/lib/gcc/mingw32/5.3.0/include/c++",
+                    "C:/MinGW/lib/gcc/mingw32/5.3.0/include/c++/mingw32",
+                    "${workspaceRoot}"
+                ],
+                "limitSymbolsToIncludedHeaders": true,
+                "databaseFilename": ""
             }
         }
-    ]
+    ],
+    "version": 3
 }

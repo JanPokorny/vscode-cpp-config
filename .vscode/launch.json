@@ -2,48 +2,93 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "C Launch (Bash on Windows)",
-            "program": "main", // <-- The executable name for debugging
-            "preLaunchTask": "build",
+            "name": "Tests",
             "type": "cppdbg",
             "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceRootFolderName}_tests",
             "args": [],
             "stopAtEntry": false,
             "cwd": ".",
             "environment": [],
             "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Follow child processes",
+                    "text": "set follow-fork-mode child",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Detach on fork",
+                    "text": "set detach-on-fork off",
+                    "ignoreFailures": true
+                }
+            ],
             "windows": {
-                "MIMode": "gdb",
-                "miDebuggerPath": "gdb",
-                "setupCommands": [
-                    {
-                        "description": "Enable pretty-printing for gdb",
-                        "text": "-enable-pretty-printing",
-                        "ignoreFailures": true
-                    },
-                    {
-                        "description": "Follow child processes",
-                        "text": "set follow-fork-mode child",
-                        "ignoreFailures": true
-                    },
-                    {
-                        "description": "Detach on fork",
-                        "text": "set detach-on-fork off",
-                        "ignoreFailures": true
-                    }
-                ]
-            },
-            "pipeTransport": {
-                "pipeCwd": "${workspaceRoot}/build",
-                "pipeProgram": "c:\\\\windows\\sysnative\\bash.exe",
-                "pipeArgs": [
-                    "-c"
-                ],
-                "debuggerPath": "/usr/bin/gdb"
-            },
-            "sourceFileMap": {
-                "/mnt/c": "C:\\\\"
+                "pipeTransport": {
+                    "pipeCwd": "${workspaceRoot}/build/",
+                    "pipeProgram": "c:\\\\windows\\sysnative\\bash.exe",
+                    "pipeArgs": [
+                        "-c"
+                    ],
+                    "debuggerPath": "/usr/bin/gdb"
+                },
+                "sourceFileMap": {
+                    "/mnt/c": "C:\\\\"
+                }
+            }
+        },
+        {
+            "name": "Main",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "./build/${workspaceRootFolderName}_main",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": ".",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Follow child processes",
+                    "text": "set follow-fork-mode child",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "Detach on fork",
+                    "text": "set detach-on-fork off",
+                    "ignoreFailures": true
+                }
+            ],
+            "windows": {
+                "pipeTransport": {
+                    "pipeCwd": "${workspaceRoot}/build/",
+                    "pipeProgram": "c:\\\\windows\\sysnative\\bash.exe",
+                    "pipeArgs": [
+                        "-c"
+                    ],
+                    "debuggerPath": "/usr/bin/gdb"
+                },
+                "sourceFileMap": {
+                    "/mnt/c": "C:\\\\"
+                }
             }
         }
     ]
 }
+// git clone https://github.com/jeremie-koenig/glibc /opt/src/glibc
