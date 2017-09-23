@@ -1,27 +1,5 @@
 ---
-Checks:          'clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-alpha*,cert-dcl50-cpp,cert-err52-cpp,cppcoreguidelines-pro-type-const-cast, cppcoreguidelines-pro-type-cstyle-cast, cppcoreguidelines-pro-type-reinterpret-cast, cppcoreguidelines-pro-type-static-cast-downcast, google-build-explicit-make-pair, google-build-namespaces, google-global-names-in-headers, google-runtime-member-string-references, google-runtime-memset, google-runtime-operator, llvm-namespace-comment, misc-argument-comment, misc-assert-side-effect, misc-assign-operator-signature, misc-definitions-in-headers, misc-inaccurate-erase, misc-inefficient-algorithm, misc-macro-parentheses, misc-macro-repeated-side-effects, misc-new-delete-overloads, misc-noexcept-move-constructor, misc-non-copyable-objects, misc-sizeof-container, misc-static-assert, misc-string-integer-assignment, misc-swapped-arguments, misc-throw-by-value-catch-by-reference, misc-undelegated-constructor, misc-uniqueptr-reset-release, misc-unused-alias-decls, misc-unused-parameters, misc-unused-raii, misc-virtual-near-miss, modernize-loop-convert, modernize-make-unique, modernize-redundant-void-arg, modernize-replace-auto-ptr, modernize-shrink-to-fit, modernize-use-auto, modernize-use-default, modernize-use-nullptr, modernize-use-override, performance-unnecessary-copy-initialization, readability-container-size-empty, readability-else-after-return, readability-inconsistent-declaration-parameter-name, readability-redundant-smartptr-get, readability-redundant-string-cstr, readability-simplify-boolean-expr, readability-uniqueptr-delete-release'
+Checks: 'clang-diagnostic-*,clang-analyzer-*,-clang-analyzer-alpha*,boost-use-to-string,bugprone-suspicious-memset-usage,bugprone-undefined-memory-manipulation,cert-dcl50-cpp,cert-env33-c,cert-err52-cpp,cert-flp30-c,cppcoreguidelines-interfaces-global-init,cppcoreguidelines-no-malloc,cppcoreguidelines-pro-type-const-cast,cppcoreguidelines-pro-type-cstyle-cast,cppcoreguidelines-pro-type-reinterpret-cast,cppcoreguidelines-pro-type-static-cast-downcast,cppcoreguidelines-slicing,google-build-explicit-make-pair,google-global-names-in-headers,google-readability-casting,google-runtime-member-string-references,google-runtime-operator,llvm-namespace-comment,misc-argument-comment,misc-assert-side-effect,misc-definitions-in-headers,misc-fold-init-type,misc-forward-declaration-namespace,misc-inaccurate-erase,misc-inefficient-algorithm,misc-lambda-function-name,misc-macro-parentheses,misc-macro-repeated-side-effects,misc-misplaced-const,misc-multiple-statement-macro,misc-new-delete-overloads,misc-noexcept-move-constructor,misc-non-copyable-objects,misc-redundant-expression,misc-sizeof-container,misc-sizeof-expression,misc-static-assert,misc-string-compare,misc-string-constructor,misc-string-integer-assignment,misc-string-literal-with-embedded-nul,misc-suspicious-enum-usage,misc-suspicious-semicolon,misc-suspicious-string-compare,misc-swapped-arguments,misc-throw-by-value-catch-by-reference,misc-unconventional-assign-operator,misc-undelegated-constructor,misc-uniqueptr-reset-release,misc-unused-alias-decls,misc-unused-parameters,misc-unused-raii,misc-virtual-near-miss,modernize-deprecated-headers,modernize-loop-convert,modernize-make-shared,modernize-make-unique,modernize-redundant-void-arg,modernize-replace-auto-ptr,modernize-replace-random-shuffle,modernize-return-braced-init-list,modernize-shrink-to-fit,modernize-use-auto,modernize-use-bool-literals,modernize-use-default-member-init,modernize-use-emplace,modernize-use-equals-default,modernize-use-equals-delete,modernize-use-noexcept,modernize-use-nullptr,modernize-use-override,modernize-use-using,performance-faster-string-find,performance-for-range-copy,performance-implicit-cast-in-loop,performance-inefficient-string-concatenation,performance-unnecessary-copy-initialization,readability-avoid-const-params-in-decls,readability-container-size-empty,readability-delete-null-pointer,readability-deleted-default,readability-else-after-return,readability-inconsistent-declaration-parameter-name,readability-misleading-indentation,readability-misplaced-array-index,readability-non-const-parameter,readability-redundant-control-flow,readability-redundant-function-ptr-dereference,readability-redundant-member-init,readability-redundant-smartptr-get,readability-redundant-string-cstr,readability-redundant-string-init,readability-simplify-boolean-expr,readability-static-definition-in-anonymous-namespace,readability-uniqueptr-delete-release'
 HeaderFilterRegex: '^.*/_tmp_/.*$'
-AnalyzeTemporaryDtors: false
-User:            kontr
-CheckOptions:
-#  - key:             readability-braces-around-statements.ShortStatementLines
-#    value:           '0'
-#  - key:             readability-function-size.StatementThreshold
-    #value:           '800'
-  - key:             llvm-namespace-comment.ShortNamespaceLines
-    value:           '1'
-  - key:             llvm-namespace-comment.SpacesBeforeComments
-    value:           '1'
-  - key:             misc-assert-side-effect.AssertMacros
-    value:           assert
-  - key:             misc-assert-side-effect.CheckFunctionCalls
-    value:           '0'
-  - key:             misc-definitions-in-headers.UseHeaderFileExtension
-    value:           '1'
-  - key:             misc-throw-by-value-catch-by-reference.CheckThrowTemporaries
-    value:           '1'
-  - key:             modernize-loop-convert.MinConfidence
-    value:           reasonable
-  - key:             modernize-use-nullptr.NullMacros
-    value:           'NULL'
+User: kontr
 ...
