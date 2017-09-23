@@ -6,16 +6,13 @@
         {
             "taskName": "build",
             "type": "shell",
-            "command": "mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS='${CMAKE_CXX_FLAGS} -g -O0' .. && make",
+            "command": "mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS='${CMAKE_CXX_FLAGS} -ggdb -O0' .. && make",
             "windows": {
-                "command": "(mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS='${CMAKE_CXX_FLAGS} -g -O0' .. && make) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
+                "command": "(mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS='${CMAKE_CXX_FLAGS} -ggdb -O0' .. && make) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
             },
             "group": {
                 "kind": "build",
                 "isDefault": true
-            },
-            "options": {
-                "cwd": "${workspaceRoot}"
             },
             "problemMatcher": {
                 "owner": "cpp",
@@ -41,9 +38,6 @@
                 "kind": "test",
                 "isDefault": true
             },
-            "options": {
-                "cwd": "${workspaceRoot}"
-            },
             "dependsOn": "build",
             "problemMatcher": {
                 "owner": "cpp",
@@ -66,6 +60,41 @@
                         "message": 1
                     }
                 ]
+            }
+        },
+        {
+            "taskName": "tidy",
+            "type": "shell",
+            "command": "clang-tidy -extra-arg-before=-x -extra-arg=-std=c++14 ${fileBasename} --",
+            "windows": {
+                "command": "(clang-tidy -extra-arg-before=-x -extra-arg=-std=c++14 ${fileBasename} --) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error|note):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
+                }
+            }
+        },
+        {
+            "taskName": "fix",
+            "type": "shell",
+            "command": "clang-tidy -fix -fix-errors -extra-arg=-std=c++14 ${fileBasename} --",
+            "windows": {
+                "command": "(clang-tidy -fix -fix-errors -extra-arg=-std=c++14 ${fileBasename} --) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
+            },
+            "problemMatcher": {
+                "owner": "cpp",
+                "fileLocation": "absolute",
+                "pattern": {
+                    "regexp": "^.*$"
+                }
             }
         }
     ]

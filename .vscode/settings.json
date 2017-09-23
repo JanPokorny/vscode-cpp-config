@@ -1,6 +1,5 @@
 // Place your settings in this file to overwrite default and user settings.
 {
-    "C_Cpp.clang_format_sortIncludes": true,
     "files.eol": "\n",
     "[cpp]": {
         "editor.quickSuggestions": true
@@ -8,5 +7,6 @@
     "[c]": {
         "editor.quickSuggestions": true
     },
-    "debug.inlineValues": true
+    "debug.inlineValues": true,
+    "editor.formatOnSave": true
 }

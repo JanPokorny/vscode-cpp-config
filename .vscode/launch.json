@@ -2,6 +2,44 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Main",
+            "type": "cppdbg",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceRootFolderName}_main",
+            "args": [
+                // "<input.txt"
+            ],
+            "stopAtEntry": false,
+            "cwd": ".",
+            "environment": [],
+            "externalConsole": true,
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "launchCompleteCommand": "exec-run",
+            "internalConsoleOptions": "neverOpen",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for gdb",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                }
+            ],
+            "windows": {
+                "pipeTransport": {
+                    "pipeCwd": "${workspaceRoot}/build/",
+                    "pipeProgram": "c:\\\\windows\\sysnative\\bash.exe",
+                    "pipeArgs": [
+                        "-c"
+                    ],
+                    "debuggerPath": "date '+%X' >> /dev/tty1 && echo === DEBUG === >> /dev/tty1 && /usr/bin/gdb -tty /dev/tty1"
+                },
+                "sourceFileMap": {
+                    "/mnt/c": "C:\\\\"
+                }
+            }
+        },
+        {
             "name": "Tests",
             "type": "cppdbg",
             "request": "launch",
@@ -14,20 +52,12 @@
             "externalConsole": true,
             "MIMode": "gdb",
             "miDebuggerPath": "gdb",
+            "launchCompleteCommand": "exec-run",
+            "internalConsoleOptions": "neverOpen",
             "setupCommands": [
                 {
                     "description": "Enable pretty-printing for gdb",
                     "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Follow child processes",
-                    "text": "set follow-fork-mode child",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Detach on fork",
-                    "text": "set detach-on-fork off",
                     "ignoreFailures": true
                 }
             ],
@@ -38,51 +68,7 @@
                     "pipeArgs": [
                         "-c"
                     ],
-                    "debuggerPath": "/usr/bin/gdb"
-                },
-                "sourceFileMap": {
-                    "/mnt/c": "C:\\\\"
-                }
-            }
-        },
-        {
-            "name": "Main",
-            "type": "cppdbg",
-            "request": "launch",
-            "preLaunchTask": "build",
-            "program": "./build/${workspaceRootFolderName}_main",
-            "args": [],
-            "stopAtEntry": false,
-            "cwd": ".",
-            "environment": [],
-            "externalConsole": true,
-            "MIMode": "gdb",
-            "miDebuggerPath": "gdb",
-            "setupCommands": [
-                {
-                    "description": "Enable pretty-printing for gdb",
-                    "text": "-enable-pretty-printing",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Follow child processes",
-                    "text": "set follow-fork-mode child",
-                    "ignoreFailures": true
-                },
-                {
-                    "description": "Detach on fork",
-                    "text": "set detach-on-fork off",
-                    "ignoreFailures": true
-                }
-            ],
-            "windows": {
-                "pipeTransport": {
-                    "pipeCwd": "${workspaceRoot}/build/",
-                    "pipeProgram": "c:\\\\windows\\sysnative\\bash.exe",
-                    "pipeArgs": [
-                        "-c"
-                    ],
-                    "debuggerPath": "/usr/bin/gdb"
+                    "debuggerPath": "date '+%X' >> /dev/tty1 && echo === DEBUG === >> /dev/tty1 && /usr/bin/gdb -tty /dev/tty1"
                 },
                 "sourceFileMap": {
                     "/mnt/c": "C:\\\\"
