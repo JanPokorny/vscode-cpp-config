@@ -25,5 +25,5 @@ You can add arguments and redirect input/output by editing the property `"args"`
 ## Available commands (`CTRL-P`)
 - `task build` -- builds the project
 - `task tests` -- builds and runs tests, then underlines failed tests
-- `task tidy` -- runs clang-tidy on the current file and underlines the errors
+- `task tidy` -- runs clang-tidy on the **current opened file** and underlines the errors
 - `task fix` -- like `task tidy`, but instead of underlining tries to fix the errors automatically
