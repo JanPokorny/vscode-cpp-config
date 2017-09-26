@@ -6,9 +6,9 @@
         {
             "taskName": "build",
             "type": "shell",
-            "command": "mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS='${CMAKE_CXX_FLAGS} -ggdb -O0' .. && make",
+            "command": "PATH=/packages/run.64/llvm-5.0.0/bin/:$PATH; mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS=\"${CMAKE_CXX_FLAGS} -ggdb -O0\" .. && make",
             "windows": {
-                "command": "(mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS='${CMAKE_CXX_FLAGS} -ggdb -O0' .. && make) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
+                "command": "(mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS=\"${CMAKE_CXX_FLAGS} -ggdb -O0\" .. && make) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
             },
             "group": {
                 "kind": "build",
@@ -85,17 +85,28 @@
         {
             "taskName": "fix",
             "type": "shell",
-            "command": "clang-tidy -fix -fix-errors -extra-arg=-std=c++14 ${fileBasename} --",
+            "command": "clang-tidy -fix -fix-errors -extra-arg=-std=c++14 ${fileBasename} -- && clang-tidy -extra-arg=-std=c++14 ${fileBasename} --",
             "windows": {
-                "command": "(clang-tidy -fix -fix-errors -extra-arg=-std=c++14 ${fileBasename} --) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
+                "command": "(clang-tidy -fix -fix-errors -extra-arg=-std=c++14 ${fileBasename} -- && clang-tidy -extra-arg=-std=c++14 ${fileBasename} --) 2>&1 | sed -e 's/\\/mnt\\/\\(.\\)/\\U\\1:/g'"
             },
             "problemMatcher": {
                 "owner": "cpp",
                 "fileLocation": "absolute",
                 "pattern": {
-                    "regexp": "^.*$"
+                    "regexp": "^(.*):(\\d+):(\\d+):\\s+(warning|error|note):\\s+(.*)$",
+                    "file": 1,
+                    "line": 2,
+                    "column": 3,
+                    "severity": 4,
+                    "message": 5
                 }
             }
+        },
+        {
+            "taskName": "coverage",
+            "type": "shell",
+            "command": "PATH=\"/packages/run.64/llvm-5.0.0/bin/:$PATH\"; mkdir -p build && cd build && cmake -DCMAKE_C_COMPILER=clang -DCMAKE_CXX_COMPILER=clang++ -DCMAKE_CXX_FLAGS=\"${CMAKE_CXX_FLAGS} -g --coverage -O0\" .. && make ${workspaceRootFolderName}_tests && lcov -d . -b . --zerocounters && ./${workspaceRootFolderName}_tests && echo '#!/bin/bash\nllvm-cov gcov \"\\$@\"' > ./llvm-gcov && chmod +x ./llvm-gcov && lcov -d . -b . --gcov-tool ./llvm-gcov --capture -o ../lcov.info",
+            "problemMatcher": []
         }
     ]
 }
